@@ -17,12 +17,14 @@ unsigned long light_show_duration = 60000; // 60 seconds for each light show
 #include "Red_To_Green.h"
 #include "Yellow_Dots.h"
 #include "Spiral_Dots.h"
+#include "Random_Colors.h"
 
 void setup() {
   pixels.begin();
 }
 
 void loop() {
+  random_colors();
   spiral_dots();
   yellow_dots();
   snow_flake();
