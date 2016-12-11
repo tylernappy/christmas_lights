@@ -2,7 +2,7 @@
 
 #define PIN 6
 #define NUMPIXELS 240
-#define MAXBRIGHTNESS 180
+#define MAXBRIGHTNESS 50
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
