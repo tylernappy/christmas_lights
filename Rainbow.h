@@ -12,7 +12,7 @@ uint32_t Wheel(byte WheelPos) {
   }
 }
 
-void rainbow() {
+void rainbow() { 
   uint16_t i, j;
   t_end = millis() + light_show_duration;
   while(millis() < t_end) {
@@ -25,4 +25,3 @@ void rainbow() {
     }    
   }
 }
-
