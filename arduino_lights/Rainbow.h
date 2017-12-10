@@ -2,13 +2,13 @@
 
 uint32_t Wheel(byte WheelPos) {
   if(WheelPos < 85) {
-   return pixels.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
+   return pixels.Color(WheelPos * 3, MAXBRIGHTNESS - WheelPos * 3, 0);
   } else if(WheelPos < 170) {
    WheelPos -= 85;
-   return pixels.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+   return pixels.Color(MAXBRIGHTNESS - WheelPos * 3, 0, WheelPos * 3);
   } else {
    WheelPos -= 170;
-   return pixels.Color(0, WheelPos * 3, 255 - WheelPos * 3);
+   return pixels.Color(0, WheelPos * 3, MAXBRIGHTNESS - WheelPos * 3);
   }
 }
 
@@ -18,7 +18,7 @@ void rainbow() {
   while(millis() < t_end) {
     for(j=0; j<256; j++) {
       for(i=0; i<pixels.numPixels(); i++) {
-        pixels.setPixelColor(i, Wheel((i+j) & 255));
+        pixels.setPixelColor(i, Wheel((i+j) & MAXBRIGHTNESS));
       }
       pixels.show();
       delay(100);

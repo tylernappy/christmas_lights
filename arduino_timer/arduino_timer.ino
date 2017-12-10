@@ -3,16 +3,20 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 
-const char* ssid = "WIFI_NAME";
-const char* password = "WIFI_PASSWORD";
+const char* ssid = "SSID";
+const char* password = "PASSWORD";
 
 ESP8266WebServer server(80);
 
+const int powerPin = 4;
+
 void lightsOn() {
+  digitalWrite(powerPin, LOW);
   server.send(200, "text/plain", "Lights on");
 }
 
 void lightsOff() {
+  digitalWrite(powerPin, HIGH);
   server.send(200, "text/plain", "Lights off");
 }
 
@@ -32,6 +36,9 @@ void handleNotFound(){
 }
 
 void setup() {
+  pinMode(powerPin, OUTPUT);
+  digitalWrite(powerPin, LOW);
+  
   Serial.begin(115200);
   WiFi.begin(ssid, password);
   Serial.println("");
